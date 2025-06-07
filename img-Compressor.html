@@ -1,187 +1,170 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Free AI-powered image compressor tool to reduce image size, convert formats, and auto-generate SEO tags." />
-  <meta property="og:title" content="Free Image Compressor - SEO Optimizer" />
-  <meta property="og:description" content="Compress images, convert formats, and auto-generate SEO tags using AI." />
-  <title>Free Image Compressor | SEO Optimizer</title>
+  <meta name="description" content="Compress your images online with our responsive image compression tool. Select compression levels and reduce file size without quality loss." />
+  <meta name="keywords" content="image compression, online image compressor, compress JPG, compress PNG, reduce image size" />
+  <meta name="author" content="YourName" />
+  <title>Online Image Compression Tool</title>
   <style>
-    * {
-      box-sizing: border-box;
+    body {
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-    }
-    body {
-      background: #f3f4f6;
-      padding: 20px;
-      color: #111827;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #f4f4f4;
     }
     header {
+      background: #2c3e50;
+      color: white;
+      padding: 1rem;
       text-align: center;
-      margin-bottom: 30px;
+      width: 100%;
     }
-    h1 {
-      font-size: 2.5rem;
-      color: #1f2937;
-    }
-    .container {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
+    main {
       max-width: 600px;
-      margin: auto;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin: 2rem;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    input[type="file"], input[type="text"] {
-      margin-bottom: 20px;
+    .ad-space {
       width: 100%;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #d1d5db;
+      margin: 1rem 0;
+      text-align: center;
     }
-    .preview, .compressed-preview {
-      margin: 15px 0;
-    }
-    .preview img, .compressed-preview img {
+    .output-img {
       max-width: 100%;
-      border-radius: 8px;
+      margin-top: 1rem;
     }
-    .controls label {
-      display: block;
-      margin: 10px 0 5px;
+    .file-input {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 1rem;
     }
-    .controls input[type="range"] {
-      width: 100%;
+    .file-input label {
+      background-color: #3498db;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .file-input label:hover {
+      background-color: #2980b9;
+    }
+    .file-input input[type="file"] {
+      display: none;
+    }
+    .file-name {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #333;
     }
     button {
-      background-color: #3b82f6;
+      background: #27ae60;
       color: white;
-      padding: 10px 20px;
+      padding: 0.7rem 1.5rem;
       border: none;
-      border-radius: 8px;
+      border-radius: 5px;
       cursor: pointer;
-      margin-top: 15px;
+      font-size: 1rem;
+      transition: background 0.3s;
     }
-    .seo-output {
-      background: #f9fafb;
-      padding: 10px;
-      border: 1px solid #d1d5db;
-      border-radius: 8px;
-      margin-top: 20px;
+    button:hover {
+      background: #1e8449;
     }
-    #ad-banner {
-      margin: 20px auto;
-      text-align: center;
-      background: #e5e7eb;
-      padding: 10px;
-      border-radius: 8px;
-    }
-    @media screen and (max-width: 600px) {
-      .container {
-        padding: 15px;
+    @media (max-width: 600px) {
+      main {
+        margin: 1rem;
+        padding: 1rem;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Image Compressor & SEO Optimizer</h1>
-  </header>
+    <h1>Image Compression Tool</h1>
+    <p>Optimize your images for web usage with ease</p>
+  </header>  <main>
+    <div class="ad-space">
+      <!-- Google AdSense Ad Unit ID Placeholder -->
+      <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+        data-ad-slot="1234567890"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    </div><div class="file-input">
+  <label for="imageInput">Choose Image</label>
+  <input type="file" id="imageInput" accept="image/*">
+  <div class="file-name" id="fileName">No file chosen</div>
+</div>
 
-  <div class="container">
-    <input type="file" id="imageInput" accept="image/*" />
-    <label for="descInput">Image Description (for SEO tags):</label>
-    <input type="text" id="descInput" placeholder="e.g., Cute puppy running in the park" />
-    <div class="preview">
-      <strong>Original Image:</strong>
-      <img id="previewImage" style="display: none;" />
-    </div>
-    <div class="controls">
-      <label for="qualityRange">Compression Quality:</label>
-      <input type="range" id="qualityRange" min="10" max="100" value="80" />
-    </div>
-    <button onclick="compressImage()">Compress Image</button>
-    <div class="compressed-preview" id="compressedPreviewContainer" style="display:none;">
-      <strong>Compressed Image:</strong>
-      <img id="compressedPreviewImage" />
-    </div>
-    <a id="downloadLink" style="display:none; margin-top:10px;">Download Compressed Image</a>
+<label for="quality">Compression Level (0 to 1):</label>
+<input type="range" id="quality" min="0.1" max="1" step="0.1" value="0.7">
+<span id="qualityVal">0.7</span>
+<br><br>
+<button onclick="compressImage()">Compress Image</button>
 
-    <div class="seo-output" id="seoOutput" style="display:none;"></div>
-  </div>
+<canvas id="canvas" style="display:none;"></canvas>
+<img id="output" class="output-img" alt="Compressed Image">
 
-  <!-- Ad Placeholder -->
-  <div id="ad-banner">
-    <!-- AdMob WebView placeholder -->
-    <p>AdMob Banner Ad (Mobile App)</p>
-  </div>
+<div class="ad-space">
+  <!-- Bottom Ad Unit -->
+  <ins class="adsbygoogle"
+    style="display:block"
+    data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+    data-ad-slot="0987654321"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
+</div>
 
-  <script>
-    const imageInput = document.getElementById('imageInput');
-    const previewImage = document.getElementById('previewImage');
-    const compressedPreviewImage = document.getElementById('compressedPreviewImage');
-    const compressedPreviewContainer = document.getElementById('compressedPreviewContainer');
-    const qualityRange = document.getElementById('qualityRange');
-    const downloadLink = document.getElementById('downloadLink');
-    const seoOutput = document.getElementById('seoOutput');
+  </main>  <script>
+    document.getElementById("quality").addEventListener("input", function () {
+      document.getElementById("qualityVal").textContent = this.value;
+    });
 
-    imageInput.addEventListener('change', function () {
-      const file = imageInput.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          previewImage.src = e.target.result;
-          previewImage.style.display = 'block';
-        };
-        reader.readAsDataURL(file);
-      }
+    document.getElementById("imageInput").addEventListener("change", function () {
+      const fileName = this.files[0] ? this.files[0].name : "No file chosen";
+      document.getElementById("fileName").textContent = fileName;
     });
 
     function compressImage() {
-      const file = imageInput.files[0];
-      if (!file) return alert('Please select an image');
+      const fileInput = document.getElementById('imageInput');
+      const quality = parseFloat(document.getElementById('quality').value);
+      const canvas = document.getElementById('canvas');
+      const output = document.getElementById('output');
 
-      const quality = qualityRange.value / 100;
+      if (fileInput.files.length === 0) return alert("Please select an image.");
+
       const reader = new FileReader();
       reader.onload = function (e) {
         const img = new Image();
-        img.src = e.target.result;
         img.onload = function () {
-          const canvas = document.createElement('canvas');
           canvas.width = img.width;
           canvas.height = img.height;
           const ctx = canvas.getContext('2d');
           ctx.drawImage(img, 0, 0);
-
-          const compressedDataUrl = canvas.toDataURL('image/jpeg', quality);
-
-          downloadLink.href = compressedDataUrl;
-          downloadLink.download = `compressed-${file.name}`;
-          downloadLink.textContent = 'Download Compressed Image';
-          downloadLink.style.display = 'inline-block';
-
-          compressedPreviewImage.src = compressedDataUrl;
-          compressedPreviewContainer.style.display = 'block';
-
-          const baseName = file.name.split('.')[0].replace(/[-_]/g, ' ');
-          const userDesc = document.getElementById('descInput').value.trim();
-          const customDesc = userDesc || baseName;
-
-          const altText = `Compressed image of ${customDesc}`;
-          const metaDesc = `This is a compressed image of ${customDesc}, optimized using our free image compressor tool.`;
-
-          seoOutput.innerHTML = `
-            <strong>SEO Alt Tag:</strong><br><code>alt=\"${altText}\"</code><br><br>
-            <strong>SEO Meta Description:</strong><br><code>${metaDesc}</code>
-          `;
-          seoOutput.style.display = 'block';
-        };
+          const compressedData = canvas.toDataURL('image/jpeg', quality);
+          output.src = compressedData;
+          const link = document.createElement('a');
+          link.href = compressedData;
+          link.download = 'compressed_image.jpg';
+          link.textContent = 'Download Compressed Image';
+          link.style.display = 'block';
+          link.style.marginTop = '10px';
+          main.appendChild(link);
+        }
+        img.src = e.target.result;
       };
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(fileInput.files[0]);
     }
-  </script>
-</body>
+  </script>  <!-- Google AdSense Script -->  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script></body>
 </html>
